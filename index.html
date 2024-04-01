@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="name">
+
+    <p>output:</p>
+    
+    <p class="email"></p>
+    <p class="namer"></p>
+    <p class="pass"></p>
+
+
+    <script>
+
+        let name = document.querySelector("#name");
+        let emails = document.querySelector(".email");
+        let pass = document.querySelector(".pass");
+        let namer = document.querySelector(".namer");
+
+
+        function formatName(inputName) {
+  // Convert the name to lowercase and replace spaces with underscores
+  const formattedName = inputName.toLowerCase().replace(/\s+/g, '_');
+  
+  // Generate a random number between 10 and 99
+  const randomNumber = Math.floor(Math.random() * 90) + 10;
+  
+  // Create the email and password
+  const email = `${formattedName}${randomNumber}`;
+  const email2 = `${formattedName}${randomNumber}@outlook.com`;
+  const password = `@${formattedName.charAt(0).toUpperCase()}${formattedName.slice(1)}54`;
+  
+  // Return an object with the formatted email and password
+  emails.textContent =  email;
+  namer.textContent = email2;
+  pass.textContent =  password;
+
+
+}
+
+        name.addEventListener("input",(e)=>{
+
+            formatName(e.target.value)
+        })
+        emails.addEventListener("click",(e)=>{
+            navigator.clipboard.writeText(emails.textContent);
+        })
+        pass.addEventListener("click",(e)=>{
+            navigator.clipboard.writeText(pass.textContent);
+        })
+
+        namer.addEventListener("click",(e)=>{
+            navigator.clipboard.writeText(namer.textContent);
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>
